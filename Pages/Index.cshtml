@@ -5,6 +5,24 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p class="description">Здесь Вы можете предложить свой уровень в Geometry Dash для прохождения на стриме канала Pull Push Play</p>
+    <form>
+        <label>ID уровня:&nbsp;</label>
+        <input type="number" max="99999999" min="10000000" placeholder="12345678" id="levelid" oninput="OnIDValueChanged(this.value)" required />
+        <br />
+        <input type="submit" value="Предложить" id="submit_level" class="button-disabled" onclick="" />
+
+    </form>
+    <script type="text/javascript">
+        function OnIDValueChanged(value) {
+            if (value >= 10000000 && value <= 99999999) {
+                document.getElementById("submit_level").classList.remove("button-disabled");
+            }
+            else {
+                document.getElementById("submit_level").classList.add("button-disabled");
+            }
+        }
+
+    </script>
+
 </div>
