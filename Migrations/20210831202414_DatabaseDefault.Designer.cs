@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GDLevels.Migrations
 {
     [DbContext(typeof(GDLevelsDataContext))]
-    [Migration("20210830231057_DefaultDB")]
-    partial class DefaultDB
+    [Migration("20210831202414_DatabaseDefault")]
+    partial class DatabaseDefault
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,8 +26,8 @@ namespace GDLevels.Migrations
                     b.Property<int>("LevelID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("RequestTime")
-                        .HasColumnType("INTEGER");
+                    b.Property<double>("RequestTime")
+                        .HasColumnType("REAL");
 
                     b.HasKey("ID");
 

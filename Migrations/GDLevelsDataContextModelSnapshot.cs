@@ -24,8 +24,8 @@ namespace GDLevels.Migrations
                     b.Property<int>("LevelID")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("RequestTime")
-                        .HasColumnType("INTEGER");
+                    b.Property<double>("RequestTime")
+                        .HasColumnType("REAL");
 
                     b.HasKey("ID");
 

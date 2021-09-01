@@ -2,7 +2,7 @@
 
 namespace GDLevels.Migrations
 {
-    public partial class DefaultDB : Migration
+    public partial class DatabaseDefault : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,7 @@ namespace GDLevels.Migrations
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    RequestTime = table.Column<int>(type: "INTEGER", nullable: false),
+                    RequestTime = table.Column<double>(type: "REAL", nullable: false),
                     LevelID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

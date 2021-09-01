@@ -16,7 +16,7 @@ namespace GDLevels.Models
         /// <summary>
         /// Дата добавления уровня в базу данных
         /// </summary>
-        public int RequestTime{ get; set; }
+        public double RequestTime{ get; set; }
         /// <summary>
         /// ID предложенного уровня
         /// </summary>
