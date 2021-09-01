@@ -8,7 +8,7 @@
    version="1.1"
    id="svg5"
    inkscape:version="1.1 (c68e22c387, 2021-05-23)"
-   sodipodi:docname="logo_white.svg"
+   sodipodi:docname="logo.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@
      fit-margin-bottom="0.2"
      inkscape:zoom="1.4823793"
      inkscape:cx="127.16044"
-     inkscape:cy="157.51704"
+     inkscape:cy="278.26886"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -63,40 +63,52 @@
      transform="translate(-38.922663,-13.088224)">
     <text
        xml:space="preserve"
-       style="font-size:52.7358px;line-height:1.25;font-family:Sanek;-inkscape-font-specification:Sanek;stroke-width:0.205998"
-       x="40.011745"
-       y="60.499321"
+       style="font-size:53.1285px;line-height:1.25;font-family:Sanek;-inkscape-font-specification:Sanek;stroke-width:0.207532"
+       x="60.659706"
+       y="60.949791"
        id="text5775"
-       transform="scale(1.328513,0.75272128)"><tspan
+       transform="scale(1.338405,0.747158)"><tspan
          sodipodi:role="line"
          id="tspan5773"
-         style="font-size:52.7358px;fill:#ffffff;stroke-width:0.205998"
-         x="40.011745"
-         y="60.499321">PULL</tspan></text>
+         style="font-size:53.1285px;fill:#ffffff;stroke-width:0.207532"
+         x="60.659706"
+         y="60.949791">ULL</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:50.51px;line-height:1.25;font-family:Sanek;-inkscape-font-specification:Sanek;stroke-width:0.197303"
-       x="41.838634"
+       x="63.879578"
        y="99.019096"
        id="text5775-7"
        transform="scale(1.2724405,0.78589137)"><tspan
          sodipodi:role="line"
          id="tspan5773-2"
          style="font-size:50.51px;fill:#ffffff;stroke-width:0.197303"
-         x="41.838634"
-         y="99.019096">PUsh</tspan></text>
+         x="63.879578"
+         y="99.019096">Ush</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:51.9703px;line-height:1.25;font-family:Sanek;-inkscape-font-specification:Sanek;stroke-width:0.203007"
-       x="40.622734"
-       y="144.83533"
+       style="font-size:52.3487px;line-height:1.25;font-family:Sanek;-inkscape-font-specification:Sanek;stroke-width:0.204485"
+       x="61.585365"
+       y="145.19194"
        id="text5775-7-5"
-       transform="scale(1.3092274,0.76380926)"><tspan
+       transform="scale(1.3187591,0.7582886)"><tspan
          sodipodi:role="line"
-         style="font-size:51.9703px;fill:#ffffff;stroke-width:0.203007"
-         x="40.622734"
-         y="144.83533"
-         id="tspan28345">PLAY</tspan></text>
+         style="font-size:52.3487px;fill:#ffffff;stroke-width:0.204485"
+         x="61.585365"
+         y="145.19194"
+         id="tspan28345">LAY</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:129.516px;line-height:1.25;font-family:Sanek;-inkscape-font-specification:Sanek;stroke-width:0.25296"
+       x="42.502758"
+       y="115.0409"
+       id="text8337"
+       transform="scale(1.045949,0.95606956)"><tspan
+         sodipodi:role="line"
+         id="tspan8335"
+         style="font-size:129.516px;fill:#ffffff;stroke-width:0.25296"
+         x="42.502758"
+         y="115.0409">P</tspan></text>
   </g>
   <metadata
      id="metadata29613">
