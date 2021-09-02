@@ -1,6 +1,16 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+p.success-text{
+    color: #02ea00;
+    font-weight:700;
+    font-size: 1.2em;
+}
+p.error-text {
+    color: #c80000;
+    font-weight: 700;
+    font-size: 1.2em;
+}
 
 table
 {
