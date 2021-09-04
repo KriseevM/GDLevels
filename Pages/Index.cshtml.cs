@@ -18,7 +18,7 @@ namespace GDLevels.Pages
         public string StatusMessage { get; set; } = "";
         public UploadStatus UploadStatus { get; private set; } = UploadStatus.NoRequest;
         private readonly ILogger<IndexModel> _logger;
-        public GDLevelsDataContext _levelsContext { get; private set; }
+        private GDLevelsDataContext _levelsContext;
         public IndexModel(ILogger<IndexModel> logger, GDLevelsDataContext levelsContext)
         {
             _logger = logger;
