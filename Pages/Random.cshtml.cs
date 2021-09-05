@@ -19,7 +19,12 @@ namespace GDLevels.Pages
         {
             _levelsContext = levelsContext;
         }
+
         public void OnGet(string key)
+        {
+            CheckKey(key);
+        }
+        public void CheckKey(string key)
         {
             if(key == _validKey)
             {
@@ -33,13 +38,23 @@ namespace GDLevels.Pages
 
         public void OnPostRandomize(string key)
         {
-            OnGet(key);
+            CheckKey(key);
             Random rand = new Random();
             SelectedID = _levelsContext.Levels.ToList()[rand.Next(0, _levelsContext.Levels.Count())].LevelID;            
         }
 
-        public void OnPostDeleteLevel(int SelectedID)
+        public async Task OnPostDeleteLevel(int selectedID, string key)
         {
+            CheckKey(key);
+            if(IsKeyValid && selectedID >= 10000000 && selectedID <= 99999999)
+            {
+                if (_levelsContext.Levels.Any(p => p.LevelID == selectedID))
+                {
+                    _levelsContext.Levels.Remove(_levelsContext.Levels.First(p=>p.LevelID == selectedID));
+                }
+            }
+            int result = await _levelsContext.SaveChangesAsync();
+            return;
         }
     }
 }
