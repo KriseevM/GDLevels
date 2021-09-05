@@ -1,6 +1,13 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+p.pages-button-container
+{
+    float: right;
+    margin-top: 1em;
+    margin-right: 1.5em;
+}
+
 p.success-text{
     color: #02ea00;
     font-weight:700;
@@ -11,18 +18,30 @@ p.error-text {
     font-weight: 700;
     font-size: 1.2em;
 }
-
 table
+{
+    align-content: center;
+    margin: auto;
+}
+td.form-right
+{
+    text-align: left;
+}
+td>input[type=number]
+{
+    width: 100%;
+}
+table.content-table
 {
     width: 100%;
     text-align: left;
     background: #bababa;
 }
-    table > thead {
+    table.content-table > thead {
         font-weight: 700;
         background: #a2a2a2;
     }
-td {
+table.content-table>*>tr>td {
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 5px;
@@ -35,8 +54,9 @@ p.description {
     font-size: 1em;
 }
 
-input[type=submit] {
+input[type=submit].request-button {
     border-radius: 1em;
+    padding-right: 2em;
     padding-left: 1em;
     padding-right: 1em;
     font-weight: 700;
@@ -45,7 +65,7 @@ input[type=submit] {
     transition: 0.3s ease-in-out;
 }
 
-    input[type=submit]:hover {
+    input[type=submit].request-button:hover {
         background: #05ed18;
         transition: 0.3s ease-in-out;
         transform: scale(1.1);

@@ -6,7 +6,7 @@
 
 
 <div class="text-center">
-    <h3>Здесь Вы можете предложить свой уровень в Geometry Dash для прохождения на стриме канала Pull Push Play</h3>
+    <h5>Здесь вы можете предлложить свой уровень для прохождения на стриме канала Pull Push Play</h5>
     @if (Model.UploadStatus == UploadStatus.Fail)
     {
         <p class="error-text">@Model.StatusMessage</p>
@@ -16,13 +16,20 @@
         <p class="success-text">@Model.StatusMessage</p>
     }
     <form method="post" action="~/Index/1">
-        <label>ID уровня:&nbsp;</label>
-        <input type="number" name="levelid" max="99999999" min="10000000" placeholder="12345678" id="levelid" oninput="OnIDValueChanged(this)" required />
-        <br />
-        <input type="submit" value="Предложить" id="submit_level" class="button-disabled" />
+        <table>
+            <tr>
+                <td><label>ID уровня:&nbsp;</label></td>
+                <td class="form-right"><input type="number" name="levelid" max="99999999" min="10000000" placeholder="12345678" id="levelid" oninput="OnIDValueChanged(this)" required /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="form-right"><input type="submit" value="Предложить" id="submit_level" class="request-button button-disabled" /></td>
+            </tr>
+        </table>
+        
     </form>
-    <h3>Список уже предложенных уровней, страница @Model.PageNumber из @Model.LastPageNumber: </h3>
-    <table>
+    <h3>Список реквестов:</h3>
+    <table class="content-table">
         <thead>
             <tr>
                 <td>ID уровня</td>
@@ -39,7 +46,7 @@
             }
         </tbody>
     </table>
-    <p>
+    <p class="pages-button-container">
         @if (Model.PageNumber > 3)
         {
             <a href="/Index/1">1</a>
