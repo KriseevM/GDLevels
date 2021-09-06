@@ -45,6 +45,8 @@
         </tbody>
     </table>
     <p class="pages-button-container">
+        @if (Model.LastPageNumber != 1)
+        {
         @if (Model.PageNumber > 3)
         {
             <a href="/Index/1">1</a>
@@ -64,11 +66,11 @@
         <b>@Model.PageNumber</b>
         @if (Model.PageNumber < Model.LastPageNumber)
         {
-            <a href="/Index/@(Model.PageNumber+1)">@(Model.PageNumber+1)</a>
+            <a href="/Index/@(Model.PageNumber + 1)">@(Model.PageNumber + 1)</a>
         }
         @if (Model.PageNumber < Model.LastPageNumber - 1)
         {
-            <a href="/Index/@(Model.PageNumber+2)">@(Model.PageNumber+2)</a>
+            <a href="/Index/@(Model.PageNumber + 2)">@(Model.PageNumber + 2)</a>
         }
         @if (Model.PageNumber < Model.LastPageNumber - 3)
         {
@@ -77,6 +79,7 @@
         @if (Model.PageNumber < Model.LastPageNumber - 2)
         {
             <a href="/Index/@(Model.LastPageNumber)">@(Model.LastPageNumber)</a>
+        }
         }
     </p>
     <script type="text/javascript">
