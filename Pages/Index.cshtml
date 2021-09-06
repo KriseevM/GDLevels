@@ -9,39 +9,37 @@
     <h5>Здесь вы можете предлложить свой уровень для прохождения на стриме канала Pull Push Play</h5>
     @if (Model.UploadStatus == UploadStatus.Fail)
     {
-        <p class="error-text">@Model.StatusMessage</p>
+        <p class="text-danger font-weight-bold">@Model.StatusMessage</p>
     }
     @if (Model.UploadStatus == UploadStatus.Success)
     {
-        <p class="success-text">@Model.StatusMessage</p>
+        <p class="text-success font-weight-bold">@Model.StatusMessage</p>
     }
     <form method="post" action="~/Index/1">
-        <table>
-            <tr>
-                <td><label>ID уровня:&nbsp;</label></td>
-                <td class="form-right"><input type="number" name="levelid" max="99999999" min="10000000" placeholder="12345678" id="levelid" oninput="OnIDValueChanged(this)" required /></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td class="form-right"><input type="submit" value="Предложить" id="submit_level" class="request-button button-disabled" /></td>
-            </tr>
-        </table>
+        
+            <label>ID уровня:&nbsp;</label>
+            <input type="number" name="levelid" max="99999999" min="10000000" placeholder="12345678" id="levelid" oninput="OnIDValueChanged(this)" required class="rounded"/>
+        
+    <input type="submit" value="Предложить" id="submit_level" class="rounded btn-outline-danger btn-animated" />
+
+                
+            
         
     </form>
-    <h3>Список реквестов:</h3>
-    <table class="content-table">
+    <!--<h3>Список реквестов:</h3> -->
+    <table class="mt-4 w-100 text-left table-active table-bordered table-hover table-striped">
         <thead>
             <tr>
-                <td>ID уровня</td>
-                <td>Дата реквеста</td>
+                <td class="p-1">ID уровня</td>
+                <td class="p-1">Дата реквеста</td>
             </tr>
         </thead>
         <tbody>
             @foreach (var level in Model.GetLevelsOnPage())
             {
                 <tr>
-                    <td>@level.LevelID</td>
-                    <td>@(DateTime.UnixEpoch.AddSeconds(level.RequestTime).ToString("g"))</td>
+                    <td class="p-1">@level.LevelID</td>
+                    <td class="p-1">@(DateTime.UnixEpoch.AddSeconds(level.RequestTime).ToString("g"))</td>
                 </tr>
             }
         </tbody>
@@ -84,10 +82,13 @@
     <script type="text/javascript">
         function OnIDValueChanged(sender) {
             if (sender.validity.valid) {
-                document.getElementById("submit_level").classList.remove("button-disabled");
+                document.getElementById("submit_level").classList.remove("btn-outline-danger");
+                document.getElementById("submit_level").classList.add("btn-success");
             }
             else {
-                document.getElementById("submit_level").classList.add("button-disabled");
+                document.getElementById("submit_level").classList.remove("btn-success");
+                document.getElementById("submit_level").classList.add("btn-outline-danger");
+
             }
         }
 

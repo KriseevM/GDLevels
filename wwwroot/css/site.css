@@ -1,96 +1,10 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-p.pages-button-container
+.btn-animated
 {
-    float: right;
-    margin-top: 1em;
-    margin-right: 1.5em;
+    transition: 0.15s ease-in-out;
 }
-
-p.success-text{
-    color: #02ea00;
-    font-weight:700;
-    font-size: 1.2em;
-}
-p.error-text {
-    color: #c80000;
-    font-weight: 700;
-    font-size: 1.2em;
-}
-table
-{
-    align-content: center;
-    margin: auto;
-}
-td.form-right
-{
-    text-align: left;
-}
-td>input[type=number]
-{
-    width: 100%;
-}
-table.content-table
-{
-    width: 100%;
-    text-align: left;
-    background: #bababa;
-}
-    table.content-table > thead {
-        font-weight: 700;
-        background: #a2a2a2;
-    }
-table.content-table>*>tr>td {
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border: solid 1px #565656;
-}
-
-p.description {
-    font-weight: 500;
-    font-size: 1em;
-}
-
-input[type=submit].request-button {
-    border-radius: 1em;
-    padding-right: 2em;
-    padding-left: 1em;
-    padding-right: 1em;
-    font-weight: 700;
-    background: #5ffe67;
-    border: 0px solid black;
-    transition: 0.3s ease-in-out;
-}
-
-    input[type=submit].request-button:hover {
-        background: #05ed18;
-        transition: 0.3s ease-in-out;
-        transform: scale(1.1);
-    }
-
-    input[type=submit].button-disabled {
-        border-radius: 1em;
-        padding-left: 1em;
-        padding-right: 1em;
-        font-weight: 700;
-        background: #bababa;
-        border: 0px solid black;
-        transition: 0.3s ease-in-out;
-    }
-
-        input[type=submit].button-disabled:hover {
-            border-radius: 1em;
-            padding-left: 1em;
-            padding-right: 1em;
-            font-weight: 700;
-            background: #e0e0e0;
-            border: 0px solid black;
-            transition: 0.3s ease-in-out;
-            transform: scale(1);
-        }
 
 img.logo {
     height: 2em;
@@ -108,6 +22,8 @@ a.navbar-brand {
     white-space: normal;
     text-align: center;
     word-break: break-all;
+    font-weight: 700;
+    font-size:1.1em;
 }
 
 /* Provide sufficient contrast against white background */
@@ -166,6 +82,10 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    
+}
+header {
+    font-family: 'Josefin Sans' sans-serif;
 }
 
 .footer {
@@ -174,4 +94,14 @@ body {
     width: 100%;
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
+}
+
+
+a.nav-link:focus, a.nav-link:hover {
+    color: #353535 !important;
+    transition: 0.2s ease-in-out;
+}
+a.text-muted
+{
+    transition: 0.2s;
 }

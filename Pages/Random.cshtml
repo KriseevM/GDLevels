@@ -8,7 +8,7 @@
     @if (Model.SelectedID != 0)
     {
         <h5>Выбран уровень</h5>
-        <h2>@Model.SelectedID</h2>
+        <h1 class="text-success font-weight-bold">@Model.SelectedID</h1>
         <h6>Чтобы выбрать ещё один уровень - нажмите на кнопку</h6>
     }
     @if(Model.SelectedID == 0)
@@ -16,10 +16,11 @@
     <h6>Чтобы выбрать случайный уровень из предложенных - нажмите на кнопку</h6>
     }
     <form method="post">
-        <input type="submit" class="button" value="Выбрать уровень" asp-page-handler="Randomize" name="randomize" />
+        <input type="submit" class="btn-primary btn-animated rounded" value="Выбрать уровень" asp-page-handler="Randomize" name="randomize" />
         @if (Model.SelectedID != 0 && Model.IsKeyValid)
         {
-            <input type="submit" name="deleteLevel" asp-page-handler="DeleteLevel" value="Удалить выбранный уровень из базы данных" />
+
+            <input type="submit" name="deleteLevel" asp-page-handler="DeleteLevel" value="Удалить выбранный уровень из базы данных" class="btn-danger btn-animated rounded"/>
             <input type="hidden" name="SelectedID" value="@Model.SelectedID" />
         }
     </form>
