@@ -13,6 +13,9 @@ namespace GDLevels.Pages
         // Значение этой переменной необходимо изменить, поскольку этот ключ используется для удаления уровней
         private string _validKey = "12345678";
         private GDLevelsDataContext _levelsContext;
+
+        public int LevelsCount { get => _levelsContext.Levels.Count(); }
+
         public int SelectedID { get; private set; } = 0;
         public bool IsKeyValid { get; private set; } = false;
         public RandomModel(GDLevelsDataContext levelsContext)
