@@ -6,16 +6,16 @@
 
 
 <div class="text-center">
-    <h5>Здесь вы можете предлложить свой уровень для прохождения на стриме канала Pull Push Play</h5>
+    <h5>Здесь можно предложить свой GD уровень для канала Pull Push Play</h5>
     @if (Model.UploadStatus == UploadStatus.Fail)
     {
-        <p class="text-danger font-weight-bold">@Model.StatusMessage</p>
+        <p class="text-danger font-weight-bold mt-3">@Model.StatusMessage</p>
     }
     @if (Model.UploadStatus == UploadStatus.Success)
     {
-        <p class="text-success font-weight-bold">@Model.StatusMessage</p>
+        <p class="text-success font-weight-bold mt-3">@Model.StatusMessage</p>
     }
-    <form method="post" action="~/Index/1">
+    <form class="mt-4" method="post" action="~/Index/1">
         
             <label>ID уровня:&nbsp;</label>
             <input type="number" name="levelid" max="99999999" min="10000000" placeholder="12345678" id="levelid" oninput="OnIDValueChanged(this)" required class="rounded"/>
@@ -27,7 +27,7 @@
         
     </form>
     <!--<h3>Список реквестов:</h3> -->
-    <table class="mt-4 w-100 text-left table-active table-bordered table-hover table-striped">
+    <table class="mt-3 w-100 text-left table-active table-bordered table-hover table-striped">
         <thead>
             <tr>
                 <td class="p-1">ID уровня</td>
@@ -44,7 +44,7 @@
             }
         </tbody>
     </table>
-    <p class="pages-button-container">
+    <p class="pages-button-container mt-2">
         @if (Model.LastPageNumber != 1)
         {
         @if (Model.PageNumber > 3)
