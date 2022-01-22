@@ -9,7 +9,7 @@
     {
         @if (Model.SelectedID != 0)
         {
-            <h5>Выбран уровень</h5>
+            <h4>Выбран уровень</h4>
             <h1 class="text-success font-weight-bold">@Model.SelectedID</h1>
             <h6>Чтобы выбрать ещё один уровень - нажмите на кнопку</h6>
         }
@@ -26,6 +26,7 @@
                 <input type="hidden" name="SelectedID" value="@Model.SelectedID" />
             }
         </form>
+        <h6>Всего предложено уровней: @Model.LevelsCount</h6>
     }
     @if (Model.LevelsCount <= 0)
     {
