@@ -1,4 +1,4 @@
-﻿@page "{key?}"
+﻿@page
 @model GDLevels.Pages.RandomModel
 @{
     ViewData["Title"] = "Рандомайзер уровней";
@@ -19,12 +19,6 @@
         }
         <form method="post">
             <input type="submit" class="btn-primary btn-animated rounded" value="Выбрать уровень" asp-page-handler="Randomize" name="randomize" />
-            @if (Model.SelectedID != 0 && Model.IsKeyValid)
-            {
-
-                <input type="submit" name="deleteLevel" asp-page-handler="DeleteLevel" value="Удалить выбранный уровень из базы данных" class="btn-danger btn-animated rounded" />
-                <input type="hidden" name="SelectedID" value="@Model.SelectedID" />
-            }
         </form>
         <h6>Всего предложено уровней: @Model.LevelsCount</h6>
     }
