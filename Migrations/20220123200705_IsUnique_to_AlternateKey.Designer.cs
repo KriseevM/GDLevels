@@ -2,14 +2,16 @@
 using GDLevels.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GDLevels.Migrations
 {
     [DbContext(typeof(GDLevelsDataContext))]
-    partial class GDLevelsDataContextModelSnapshot : ModelSnapshot
+    [Migration("20220123200705_IsUnique_to_AlternateKey")]
+    partial class IsUnique_to_AlternateKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -15,8 +15,7 @@ namespace GDLevels.Data
             => options.UseSqlite("Data Source=levels.db");
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Level>().HasKey(p => p.ID);
-            modelBuilder.Entity<Level>().HasIndex(i => i.LevelID).IsUnique(true);
+            modelBuilder.Entity<Level>().HasAlternateKey(i => i.LevelID);
         }
     }
 }
