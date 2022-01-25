@@ -29,6 +29,7 @@ namespace GDLevels
             services.AddRazorPages();
             services.AddDbContext<GDLevelsDataContext>();
             services.AddHttpClient<ICheckVkAuthService, CheckVkAuthService>();
+            services.AddScoped<ILevelsDataAdapter, LevelsDataAdapter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
