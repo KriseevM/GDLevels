@@ -7,14 +7,8 @@
 
 <div class="text-center">
     <h5>Здесь можно предложить свой GD уровень для канала Pull Push Play</h5>
-    @if (Model.UploadStatus == UploadStatus.Fail)
-    {
-        <p class="text-danger font-weight-bold mt-3">@Model.StatusMessage</p>
-    }
-    @if (Model.UploadStatus == UploadStatus.Success)
-    {
-        <p class="text-success font-weight-bold mt-3">@Model.StatusMessage</p>
-    }
+    <p class="@(Model.UploadStatusMessage.IsSuccessful ? "text-success" : "text-danger") font-weight-bold mt-3">
+        @Model.UploadStatusMessage.Message</p>
     <form class="mt-4" method="post" action="~/Index/1">
         
             <label>ID уровня:&nbsp;</label>
@@ -35,10 +29,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var level in Model.GetLevelsOnPage())
+            @foreach (var level in Model.LevelsAdapter.GetLevelsOnPage(Model.PageNumber, IndexModel.LevelsPerPage))
             {
                 <tr>
-                    <td class="p-1">@level.LevelID</td>
+                    <td class="p-1">@level.LevelID.ToString()</td>
                     <td class="p-1">@(DateTime.UnixEpoch.AddSeconds(level.RequestTime).ToString("g"))</td>
                 </tr>
             }
@@ -57,20 +51,20 @@
         }
         @if (Model.PageNumber > 2)
         {
-            <a href="/Index/@(Model.PageNumber - 2)">@(Model.PageNumber - 2)</a>
+            <a href="/Index/@((Model.PageNumber - 2).ToString())">@((Model.PageNumber - 2).ToString())</a>
         }
         @if (Model.PageNumber > 1)
         {
-            <a href="/Index/@(Model.PageNumber - 1)">@(Model.PageNumber - 1)</a>
+            <a href="/Index/@((Model.PageNumber - 1).ToString())">@((Model.PageNumber - 1).ToString())</a>
         }
-        <b>@Model.PageNumber</b>
+        <b>@Model.PageNumber.ToString()</b>
         @if (Model.PageNumber < Model.LastPageNumber)
         {
-            <a href="/Index/@(Model.PageNumber + 1)">@(Model.PageNumber + 1)</a>
+            <a href="/Index/@((Model.PageNumber + 1).ToString())">@((Model.PageNumber + 1).ToString())</a>
         }
         @if (Model.PageNumber < Model.LastPageNumber - 1)
         {
-            <a href="/Index/@(Model.PageNumber + 2)">@(Model.PageNumber + 2)</a>
+            <a href="/Index/@((Model.PageNumber + 2).ToString())">@((Model.PageNumber + 2).ToString())</a>
         }
         @if (Model.PageNumber < Model.LastPageNumber - 3)
         {
@@ -78,7 +72,7 @@
         }
         @if (Model.PageNumber < Model.LastPageNumber - 2)
         {
-            <a href="/Index/@(Model.LastPageNumber)">@(Model.LastPageNumber)</a>
+            <a href="/Index/@(Model.LastPageNumber.ToString())">@(Model.LastPageNumber.ToString())</a>
         }
         }
     </p>
