@@ -45,5 +45,18 @@ namespace GDLevels.Data.Adapters
 
             return new StatusMessage("Уровень почему-то не добавлен :(", false);
         }
+
+        public async Task<StatusMessage> RemoveLevelAsync(int levelId)
+        {
+            if (_levelsContext.Levels.Any(p => (p.LevelId == levelId)))
+            {
+                _levelsContext.Levels.Remove(_levelsContext.Levels.First(p => p.LevelId == levelId));
+
+                await _levelsContext.SaveChangesAsync();
+                return new StatusMessage("Уровень удалён успешно", true);
+            }
+
+            return new StatusMessage("Уровня нет в базе данных", false);
+        }
     }
 }
