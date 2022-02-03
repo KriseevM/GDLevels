@@ -1,12 +1,11 @@
 ﻿using GDLevels.Data;
-using GDLevels.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GDLevels.Data.Adapters.Interfaces;
+using GDLevels.Misc;
 
 namespace GDLevels.Pages
 {
@@ -20,25 +19,29 @@ namespace GDLevels.Pages
         private GDLevelsDataContext _levelsContext;
         private readonly ILevelsDataAdapter _levelsAdapter;
         public ILevelsDataAdapter LevelsAdapter => _levelsAdapter;
-        public IndexModel(ILogger<IndexModel> logger, GDLevelsDataContext levelsContext, ILevelsDataAdapter levelsAdapter)
+
+        public IndexModel(ILogger<IndexModel> logger, GDLevelsDataContext levelsContext,
+            ILevelsDataAdapter levelsAdapter)
         {
             _logger = logger;
             _levelsContext = levelsContext;
             _levelsAdapter = levelsAdapter;
         }
+
         public async Task<IActionResult> OnPostAsync(int levelid)
         {
             OnGet(1);
             if (levelid < 10000000 || levelid > 99999999)
             {
-                UploadStatusMessage = new StatusMessage("Этого не должно было произойти, но отправленный ID некорректен", false);
+                UploadStatusMessage =
+                    new StatusMessage("Этого не должно было произойти, но отправленный ID некорректен", false);
                 return Page();
             }
 
             UploadStatusMessage = await _levelsAdapter.AddLevelAsync(levelid);
             return Page();
-
         }
+
         public IActionResult OnGet(int pageNumber)
         {
             LastPageNumber = _levelsContext.Levels.Count() / LevelsPerPage + 1;
@@ -57,6 +60,5 @@ namespace GDLevels.Pages
                 return Page();
             }
         }
-        
     }
 }

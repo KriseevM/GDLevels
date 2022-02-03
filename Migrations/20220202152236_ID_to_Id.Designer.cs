@@ -2,14 +2,16 @@
 using GDLevels.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GDLevels.Migrations
 {
     [DbContext(typeof(GDLevelsDataContext))]
-    partial class GDLevelsDataContextModelSnapshot : ModelSnapshot
+    [Migration("20220202152236_ID_to_Id")]
+    partial class ID_to_Id
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +23,7 @@ namespace GDLevels.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("LevelId")
+                    b.Property<int>("LevelID")
                         .HasColumnType("INTEGER");
 
                     b.Property<double>("RequestTime")
@@ -29,7 +31,7 @@ namespace GDLevels.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasAlternateKey("LevelId");
+                    b.HasAlternateKey("LevelID");
 
                     b.ToTable("Levels");
                 });

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace GDLevels.Models
 {
@@ -12,15 +8,17 @@ namespace GDLevels.Models
         /// ID реквеста
         /// </summary>
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
+
         /// <summary>
         /// Дата добавления уровня в базу данных
         /// </summary>
-        public double RequestTime{ get; set; }
+        public double RequestTime { get; set; }
+
         /// <summary>
         /// ID предложенного уровня
         /// </summary>
         [Range(10000000, 99999999)]
-        public int LevelID { get; set; }
+        public int LevelId { get; set; }
     }
 }

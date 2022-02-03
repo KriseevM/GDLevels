@@ -2,15 +2,14 @@ using GDLevels.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Http;
+using GDLevels.Data.Adapters;
+using GDLevels.Data.Adapters.Interfaces;
+using GDLevels.Services;
+using GDLevels.Services.Interfaces;
 
 namespace GDLevels
 {
@@ -26,10 +25,19 @@ namespace GDLevels
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+                options.IdleTimeout = TimeSpan.FromMinutes(240);
+            });
             services.AddDbContext<GDLevelsDataContext>();
-            services.AddHttpClient<ICheckVkAuthService, CheckVkAuthService>();
+            services.AddHttpClient<IOAuthPerformerService, VkOauthPerformerService>();
+            services.AddHttpClient<IOAuthCheckerService, VkOauthCheckerService>();
             services.AddScoped<ILevelsDataAdapter, LevelsDataAdapter>();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,9 +62,9 @@ namespace GDLevels
             app.UseAuthentication();
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

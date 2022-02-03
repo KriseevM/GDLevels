@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
@@ -9,20 +8,31 @@ namespace GDLevels.Pages
     {
         private readonly IConfiguration _config;
         private bool _isAuthorized = false;
-        private ICheckVkAuthService _vkAuthChecker;
         public bool IsAuthorized => _isAuthorized;
-        public AdminModel(IConfiguration config, ICheckVkAuthService vkAuthChecker)
+
+        public AdminModel(IConfiguration config)
         {
             _config = config;
-            _vkAuthChecker = vkAuthChecker;
         }
-        public async Task<ActionResult> OnGetAsync([FromQuery]string code)
+
+        public ActionResult OnGetAsync()
         {
-            if (code == null)
+            byte[] isAuthData;
+            if (HttpContext.Session.TryGetValue("isAuth", out isAuthData))
             {
-                return Redirect($"https://oauth.vk.com/authorize?client_id={_config["VK:client_id"]}&redirect_uri={_config["VK:auth_redir_uri"]}");
+                _isAuthorized = isAuthData[0] == 1;
             }
-            _isAuthorized = await _vkAuthChecker.CheckVkAuthByFlowCodeAsync(code);
+            else
+            {
+                _isAuthorized = false;
+                return RedirectToPage("auth", new {redirectPage = "admin"});
+            }
+
+            if (!_isAuthorized)
+            {
+                return RedirectToPage("Index");
+            }
+
             return Page();
         }
     }
