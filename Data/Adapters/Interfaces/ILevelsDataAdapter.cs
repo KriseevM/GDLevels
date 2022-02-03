@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using GDLevels.Misc;
 using GDLevels.Models;
 
-namespace GDLevels
+namespace GDLevels.Data.Adapters.Interfaces
 {
     public interface ILevelsDataAdapter
     {

@@ -32,7 +32,7 @@
             @foreach (var level in Model.LevelsAdapter.GetLevelsOnPage(Model.PageNumber, IndexModel.LevelsPerPage))
             {
                 <tr>
-                    <td class="p-1">@level.LevelID.ToString()</td>
+                    <td class="p-1">@level.LevelId.ToString()</td>
                     <td class="p-1">@(DateTime.UnixEpoch.AddSeconds(level.RequestTime).ToString("g"))</td>
                 </tr>
             }
