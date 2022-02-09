@@ -40,7 +40,7 @@ namespace GDLevels.Pages
                 if (checkResult)
                 {
                     HttpContext.Session.Set("isAuth", new byte[] {1});
-                    return RedirectToPage(redirectPage);
+                    return Redirect(redirectPage);
                 }
 
                 HttpContext.Session.Set("isAuth", new byte[] {0});
