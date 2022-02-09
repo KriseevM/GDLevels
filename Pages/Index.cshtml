@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Предложить уровень";
 }
+@using GDLevels.Pages.Shared.Components
+
 
 
 <div class="text-center">
@@ -11,71 +13,16 @@
         @Model.UploadStatusMessage.Message</p>
     <form class="mt-4" method="post" action="~/Index/1">
         
-            <label>ID уровня:&nbsp;</label>
-            <input type="number" name="levelid" max="99999999" min="10000000" placeholder="12345678" id="levelid" oninput="OnIDValueChanged(this)" required class="rounded"/>
+        <label>ID уровня:&nbsp;</label>
+        <input type="number" name="levelid" max="99999999" min="10000000" placeholder="12345678" id="levelid" oninput="OnIDValueChanged(this)" required class="rounded"/>
         
-    <input type="submit" value="Предложить" id="submit_level" class="rounded btn-outline-danger btn-animated" />
+        <input type="submit" value="Предложить" id="submit_level" class="rounded btn-outline-danger btn-animated" />
 
                 
             
         
     </form>
-    <!--<h3>Список реквестов:</h3> -->
-    <table class="mt-3 w-100 text-left table-active table-bordered table-hover table-striped">
-        <thead>
-            <tr>
-                <td class="p-1">ID уровня</td>
-                <td class="p-1">Дата реквеста</td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var level in Model.LevelsAdapter.GetLevelsOnPage(Model.PageNumber, IndexModel.LevelsPerPage))
-            {
-                <tr>
-                    <td class="p-1">@level.LevelId.ToString()</td>
-                    <td class="p-1">@(DateTime.UnixEpoch.AddSeconds(level.RequestTime).ToString("g"))</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <p class="pages-button-container mt-2">
-        @if (Model.LastPageNumber != 1)
-        {
-        @if (Model.PageNumber > 3)
-        {
-            <a href="/Index/1">1</a>
-        }
-        @if (Model.PageNumber > 4)
-        {
-            <b>...</b>
-        }
-        @if (Model.PageNumber > 2)
-        {
-            <a href="/Index/@((Model.PageNumber - 2).ToString())">@((Model.PageNumber - 2).ToString())</a>
-        }
-        @if (Model.PageNumber > 1)
-        {
-            <a href="/Index/@((Model.PageNumber - 1).ToString())">@((Model.PageNumber - 1).ToString())</a>
-        }
-        <b>@Model.PageNumber.ToString()</b>
-        @if (Model.PageNumber < Model.LastPageNumber)
-        {
-            <a href="/Index/@((Model.PageNumber + 1).ToString())">@((Model.PageNumber + 1).ToString())</a>
-        }
-        @if (Model.PageNumber < Model.LastPageNumber - 1)
-        {
-            <a href="/Index/@((Model.PageNumber + 2).ToString())">@((Model.PageNumber + 2).ToString())</a>
-        }
-        @if (Model.PageNumber < Model.LastPageNumber - 3)
-        {
-            <b>...</b>
-        }
-        @if (Model.PageNumber < Model.LastPageNumber - 2)
-        {
-            <a href="/Index/@(Model.LastPageNumber.ToString())">@(Model.LastPageNumber.ToString())</a>
-        }
-        }
-    </p>
+    <component type="typeof(LevelsTable)" render-mode="Static" param-LevelsAdapter="@Model.LevelsAdapter" param-CurrentPage="@Model.PageNumber" />
     <script type="text/javascript">
         function OnIDValueChanged(sender) {
             if (sender.validity.valid) {
