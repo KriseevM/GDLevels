@@ -3,7 +3,7 @@
 @using Microsoft.AspNetCore.Mvc
 @if (DisplayHeader)
 {
-    <h3>Список уровней</h3>
+    <h3 class="pl-4">Список уровней</h3>
 }
 @code {
     [Parameter]
@@ -69,11 +69,11 @@
     {
         @if (CurrentPage > 3)
         {
-            <a class=" m-2" href="1">1</a>
+            <a class="m-2" href="1">1</a>
         }
         @if (CurrentPage > 4)
         {
-            <b>...</b>
+            <b class="m-2">...</b>
         }
         @if (CurrentPage > 2)
         {
@@ -83,7 +83,7 @@
         {
             <a class="m-2" href="@(CurrentPage - 1)">@((CurrentPage - 1).ToString())</a>
         }
-        <b>@CurrentPage.ToString()</b>
+        <b  class="m-2">@CurrentPage.ToString()</b>
         @if (CurrentPage < LastPage)
         {
             <a class="m-2" href="@(CurrentPage + 1)">@((CurrentPage + 1).ToString())</a>
@@ -94,7 +94,7 @@
         }
         @if (CurrentPage < LastPage - 3)
         {
-            <b>...</b>
+            <b class="m-2">...</b>
         }
         @if (CurrentPage < LastPage - 2)
         {

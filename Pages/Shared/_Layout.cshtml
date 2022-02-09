@@ -13,7 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 </head>
-<body>
+<!-- Стиль нужно задавать здесь, потому что подключенный по умолчанию scss файл ломает любые другие стили-->
+<body style="margin-bottom: 60px">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -36,19 +37,14 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - PULL PUSH PLAY
+    <footer class="border-top footer text-muted pr-4 pl-4">
+        &copy; 2021 - PULL PUSH PLAY
             <a href="https://www.youtube.com/c/pullpushplay" rel="noopener" class="social-link" target="_blank"><img src="/res/images/youtube.svg" class="social-icon" /></a>
             <a href="https://www.twitch.tv/pullpushplay" rel="noopener" class="social-link" target="_blank"><img src="/res/images/twitch.svg" class="social-icon" /></a>
-            <!-- - <a asp-area="" asp-page="/Privacy">Privacy</a>-->
-        </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
