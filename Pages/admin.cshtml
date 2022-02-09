@@ -1,10 +1,11 @@
-@page
+@page "{pageNumber:int?}"
+@using GDLevels.Pages.Shared.Components
 @model AdminModel
 @{
-    ViewData["Title"] = "Admin Panel";
+    ViewData["Title"] = "Админ-панель";
 }
 
 @if (Model.IsAuthorized)
 {
-    
+    <component type="typeof(LevelsTable)" render-mode="Static" param-LevelsAdapter="@Model.LevelsAdapter" param-CurrentPage="@Model.PageNumber" param-LevelsPerPage="30" param-DisplayHeader="true" param-PageName="@($"admin/{Model.PageNumber}")" param-CanDeleteLevels="true"/>
 }
