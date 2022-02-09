@@ -20,6 +20,9 @@ namespace GDLevels.Data.Adapters
             _logger = logger;
         }
 
+        public GDLevelsDataContext Context => _levelsContext;
+        public int LevelsCount => _levelsContext.Levels.Count();
+
         public IEnumerable<Level> GetLevelsOnPage(int page, int levelsPerPage)
         {
             return _levelsContext.Levels.OrderBy(p => p.RequestTime).Reverse().Skip((page - 1) * levelsPerPage)

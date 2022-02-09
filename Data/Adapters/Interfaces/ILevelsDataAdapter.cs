@@ -7,6 +7,8 @@ namespace GDLevels.Data.Adapters.Interfaces
 {
     public interface ILevelsDataAdapter
     {
+        public GDLevelsDataContext Context { get; }
+        public int LevelsCount { get; }
         public IEnumerable<Level> GetLevelsOnPage(int page, int levelsPerPage);
         public Task<StatusMessage> AddLevelAsync(int levelId);
         public Task<StatusMessage> RemoveLevelAsync(int levelId);
