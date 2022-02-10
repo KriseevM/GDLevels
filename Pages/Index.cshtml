@@ -11,7 +11,7 @@
     <h5>Здесь можно предложить свой GD уровень для канала Pull Push Play</h5>
     <p class="@(Model.UploadStatusMessage.IsSuccessful ? "text-success" : "text-danger") font-weight-bold mt-3">
         @Model.UploadStatusMessage.Message</p>
-    <form class="mt-4" method="post" action="~/Index/1">
+    <form class="mt-4 mb-4" method="post" action="~/Index/1">
         
         <label>ID уровня:&nbsp;</label>
         <input type="number" name="levelid" max="99999999" min="10000000" placeholder="12345678" id="levelid" oninput="OnIDValueChanged(this)" required class="rounded"/>
