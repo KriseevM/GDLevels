@@ -56,7 +56,7 @@
         {
             <tr>
                 <td class="p-1">@level.LevelId.ToString()</td>
-                <td class="p-1">@(DateTime.UnixEpoch.AddSeconds(level.RequestTime).ToString("g"))</td>
+                <td class="p-1">@(DateTime.UnixEpoch.AddSeconds(level.RequestTime).ToString("dd.MM.yyyy, HH:mm"))</td>
                 @if (CanDeleteLevels)
                 {
                     <td class="p-1 text-danger text-center"><a class="text-danger" href="/Delete?levelId=@level.LevelId&redirect=@PageName">X</a></td>
