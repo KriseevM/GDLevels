@@ -1,35 +1,42 @@
 using System;
 using System.Linq;
 using GDLevels.Data;
+using GDLevels.Data.Adapters.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace GDLevels.Pages
 {
     public class RandomModel : PageModel
     {
-        private GDLevelsDataContext _levelsContext;
+        private ILevelsDataAdapter _levelsData;
 
         public int LevelsCount
         {
-            get => _levelsContext.Levels.Count();
+            get => _levelsData.LevelsCount;
         }
 
         public int SelectedID { get; private set; } = 0;
         public bool IsKeyValid { get; private set; } = false;
 
-        public RandomModel(GDLevelsDataContext levelsContext)
+        public RandomModel(ILevelsDataAdapter levelsData)
         {
-            _levelsContext = levelsContext;
+            _levelsData = levelsData;
         }
 
         public void OnGet()
         {
         }
 
-        public void OnPostRandomize()
+        public IActionResult OnPostRandomize()
         {
             Random rand = new Random();
-            SelectedID = _levelsContext.Levels.ToList()[rand.Next(0, _levelsContext.Levels.Count())].LevelId;
+            if (_levelsData.LevelsCount > 0)
+            {
+                SelectedID = _levelsData.Context.Levels.ToList()[rand.Next(0, _levelsData.Context.Levels.Count())].LevelId;
+                return Page();
+            }
+            return RedirectToPage("Random");
         }
     }
 }
