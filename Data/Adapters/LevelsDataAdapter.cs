@@ -56,6 +56,7 @@ namespace GDLevels.Data.Adapters
                 _levelsContext.Levels.Remove(_levelsContext.Levels.First(p => p.LevelId == levelId));
 
                 await _levelsContext.SaveChangesAsync();
+                _logger.LogInformation("Removed level {level} from database", levelId);
                 return new StatusMessage("Уровень удалён успешно", true);
             }
 
