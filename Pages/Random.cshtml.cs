@@ -17,7 +17,6 @@ namespace GDLevels.Pages
         }
 
         public int SelectedID { get; private set; } = 0;
-        public bool IsKeyValid { get; private set; } = false;
 
         public RandomModel(ILevelsDataAdapter levelsData)
         {
