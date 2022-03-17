@@ -19,7 +19,43 @@
         }
         <form method="post">
             <input type="submit" class="btn-primary btn-animated rounded" value="Выбрать уровень" asp-page-handler="Randomize" name="randomize" />
+            @if (Model.SelectedID != 0)
+            {
+                <input type="button" id="copy-btn" onclick="copyBtnClick()" class="btn-light btn-animated ml-3 rounded" value="Скопировать">
+                <script type="text/javascript">
+                    function copyBtnClick()
+                    {
+                        var copyBtn = $("#copy-btn");
+                        let text = '@Model.SelectedID';
+                        if(!navigator.clipboard)
+                        {
+                            alert("Возможно, Ваш браузер устарел и не поддерживает современный способ копирования в буфер обмена. \n" +
+                                "Пожалуйста, обновите Ваш браузер или выделите и скопируйте id уровня самостоятельно.");
+                            return;
+                        }
+                        navigator.clipboard.writeText(text).then(function() {
+                            
+                            copyBtn.removeClass("btn-light");
+                            copyBtn.addClass("btn-success");
+                            setTimeout(function (){ 
+                                copyBtn.removeClass("btn-success"); 
+                                copyBtn.addClass("btn-light"); 
+                            }, 500);
+                            console.log('Async: Copying to clipboard was successful!');
+                        }, function(err) {
+                            copyBtn.removeClass("btn-light");
+                            copyBtn.addClass("btn-danger");
+                            setTimeout(function (){ 
+                                copyBtn.removeClass("btn-danger"); 
+                                copyBtn.addClass("btn-light"); 
+                            }, 500);
+                            console.error('Async: Could not copy text: ', err);
+                        });
+                    }
+                </script>
+            }
         </form>
+        
         <h6>Всего предложено уровней: @Model.LevelsCount</h6>
     }
     @if (Model.LevelsCount <= 0)
