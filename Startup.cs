@@ -25,7 +25,9 @@ namespace GDLevels
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            services.Configure<RequestLocalizationOptions>(options => options
+            .SetDefaultCulture("ru-RU")
+            .AddSupportedCultures("ru-RU", "ru", "en", "en-US", "en-GB"));
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
@@ -47,6 +49,7 @@ namespace GDLevels
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseHttpLogging();
             }
             else
             {
@@ -59,7 +62,7 @@ namespace GDLevels
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
-
+            app.UseRequestLocalization();
             app.UseAuthentication();
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
