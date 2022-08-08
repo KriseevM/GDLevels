@@ -4,7 +4,6 @@
     <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>411269dc-8263-4801-9894-897bd3a8e7e5</UserSecretsId>
     <PublishSingleFile>false</PublishSingleFile>
-    <SelfContained>true</SelfContained>
     <PublishReadyToRun>true</PublishReadyToRun>
   </PropertyGroup>
 
